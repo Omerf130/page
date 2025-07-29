@@ -40,7 +40,7 @@ const InputSection: React.FC = () => {
       .map((label, index) => `${label}: ${fields[index]}`)
       .join("\n");
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "+972544993155";
+    const phoneNumber = "+972502699613";
     window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
   };
 

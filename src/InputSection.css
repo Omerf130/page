@@ -1,120 +1,138 @@
 body {
   direction: rtl;
-  background-color: #fff;
-  color: #000;
-  text-align: right;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 .app {
   display: flex;
+  justify-content: center;
+  padding: 20px;
 }
+
 .input-section {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  width: 100%;
+  align-items: stretch;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   max-width: 600px;
-  margin: 0 auto;
-  direction: rtl;
+  width: 60vw;
+  margin: auto;
 }
+
 .input-group {
   display: flex;
-  flex-direction: column; 
-  gap: 8px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
   width: 100%;
 }
+
 label {
   font-size: 16px;
-  text-align: right;
-  width: 100%;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
 }
-input[type="text"] {
-  color: #000;
-  border: none;
-  border-bottom: 1px solid #aaa;
-  background: transparent;
-  font-size: 14px;
-  padding: 6px 8px;
-  width: 100%; 
-  max-width: 400px; 
-  text-align: right;
+
+input[type="text"],
+textarea {
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  padding: 6px 12px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #00796b;
+  box-shadow: 0 0 4px rgba(0, 121, 107, 0.3);
   outline: none;
 }
-input[type="text"]:focus {
-  border-bottom: 1px solid #000;
-}
-.headline {
-  font-size: 18px;
-  font-weight: bold;
-  align-self: flex-start; 
-  margin-bottom: 8px;
-}
+
 textarea {
-  width: 100%;
-  min-height: 70px;
-  padding: 10px;
-  font-size: 16px;
-  resize: none;
-  margin-top: 10px;
-  direction: rtl;
-  max-width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  margin-top: 8px;
 }
+
+.headline {
+  font-size: 20px;
+  font-weight: 700;
+  color: #00796b;
+  margin: 16px 0 8px;
+  text-align: right;
+}
+
 .btn {
-  border: 1px solid #000;
-  background-color: greenyellow;
-  padding: 10px 20px;
-  width: 100%;
-  max-width: 200px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 15px;
   font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 240px;
+  align-self: center;
 }
+
 .btn:hover {
-  background-color: yellowgreen;
+  background-color: #388e3c;
 }
+
 @media (max-width: 768px) {
   .input-section {
-    padding: 15px;
-  }
-
-  .input-group {
-    gap: 12px;
+    padding: 20px;
   }
 
   input[type="text"],
   textarea {
     font-size: 14px;
-    padding: 8px;
+    padding: 6px;
+  }
+
+  .headline {
+    font-size: 18px;
   }
 
   .btn {
-    max-width: 100%;
+    font-size: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .input-section {
-    padding: 10px;
-  }
-
-  .input-group {
-    gap: 8px;
+    padding: 16px;
   }
 
   label {
     font-size: 14px;
   }
 
+  input[type="text"],
+  textarea {
+    font-size: 13px;
+  }
+
   .headline {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .btn {
     font-size: 14px;
+    padding: 10px;
   }
 }

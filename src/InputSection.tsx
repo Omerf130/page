@@ -37,7 +37,7 @@ const InputSection: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    const phoneNumber = "+972544993155";
+    const phoneNumber = "+972549132875";
 
     // Construct message parts
     const fieldLines = labels.map(

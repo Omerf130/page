@@ -93,6 +93,10 @@ textarea {
   background-color: #388e3c;
 }
 
+.logo {
+  font-size: 24px;
+}
+
 @media (max-width: 768px) {
   .input-section {
     padding: 20px;

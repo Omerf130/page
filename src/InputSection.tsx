@@ -3,15 +3,7 @@ import "./InputSection.css";
 
 const InputSection: React.FC = () => {
   const [fields, setFields] = useState(Array.from({ length: 19 }, () => ""));
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
-    index: number
-  ) => {
-    const updatedFields = [...fields];
-    updatedFields[index] = e.target.value;
-    setFields(updatedFields);
-  };
+  const [notes, setNotes] = useState("");
 
   const labels = [
     "בניין",
@@ -35,17 +27,42 @@ const InputSection: React.FC = () => {
     "קודנים",
   ];
 
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+    index: number
+  ) => {
+    const updatedFields = [...fields];
+    updatedFields[index] = e.target.value;
+    setFields(updatedFields);
+  };
+
   const handleSubmit = () => {
-    const message = labels
-      .map((label, index) => `${label}: ${fields[index]}`)
-      .join("\n");
-    const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = "+972502699613";
-    window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const phoneNumber = "+972544993155";
+
+    // Construct message parts
+    const fieldLines = labels.map(
+      (label, index) => `${label}: ${fields[index]}`
+    );
+
+    const notesLine = notes.trim() ? `\n\nהערות:\n${notes.trim()}` : "";
+
+    // Combine all parts
+    let fullMessage = [...fieldLines, notesLine].join("\n");
+
+    // Trim if too long (max safe WhatsApp limit)
+    if (fullMessage.length > 2000) {
+      fullMessage = fullMessage.slice(0, 1990) + "...\n[הודעה נחתכה]";
+    }
+
+    const encodedMessage = encodeURIComponent(fullMessage);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
   };
 
   return (
     <div className="input-section">
+      <div className="logo">
+        <p>i.f mivnim</p>
+      </div>
       <div className="input-group">
         {labels.slice(0, 3).map((label, index) => (
           <div key={index}>
@@ -76,7 +93,12 @@ const InputSection: React.FC = () => {
           </div>
         ))}
 
-        <textarea placeholder="הערות"></textarea>
+        <label>הערות</label>
+        <textarea
+          placeholder="הערות"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+        ></textarea>
       </div>
 
       <button className="btn" onClick={handleSubmit}>
